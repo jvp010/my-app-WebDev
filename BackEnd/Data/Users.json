@@ -1,0 +1,47 @@
+[
+  {
+    "Id": "d9a2785f-9427-431a-879f-bc22b205405d",
+    "First_Name": "Micheal",
+    "Last_Name": "Bubley",
+    "Email": "michealbubley@example.com",
+    "Password": "lolcow",
+    "Recurring_Days": 5,
+    "Role": "User"
+  },
+  {
+    "Id": "e4e8ffb8-ff97-45d8-83fe-b19d4d248fc2",
+    "First_Name": "Kating",
+    "Last_Name": "Doe",
+    "Email": "kating@example.com",
+    "Password": "bomba",
+    "Recurring_Days": 3,
+    "Role": "User"
+  },
+  {
+    "Id": "7d0cc35b-9117-4eec-93b9-769d76946955",
+    "First_Name": "Beta",
+    "Last_Name": "Lux",
+    "Email": "betalux@example.com",
+    "Password": "benalux",
+    "Recurring_Days": 7,
+    "Role": "User"
+  },
+  {
+    "Id": "9a769893-bd42-4a51-8b38-6fe28aad5f0f",
+    "First_Name": "hasan",
+    "Last_Name": "Piker",
+    "Email": "betalux@example.com",
+    "Password": "benalux",
+    "Recurring_Days": 0,
+    "Role": "User"
+  },
+  {
+    "Id": "150c288c-01e6-4ae6-b2cd-746d08674e33",
+    "First_Name": "hasan",
+    "Last_Name": "Piker",
+    "Email": "betalux@example.com",
+    "Password": "benalux",
+    "Recurring_Days": 0,
+    "Role": "User"
+  }
+]

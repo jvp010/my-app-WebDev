@@ -1,0 +1,31 @@
+[
+  {
+    "Id": "ac1c489d-c090-49dc-b850-b827f1d1b049",
+    "Title": "MeetingBing",
+    "Name": "hihi",
+    "Description": "Very important",
+    "Date": "2024-09-23T21:21:30.3619148+02:00",
+    "Start_Time": "17:00:00",
+    "End_Time": "19:00:00",
+    "Location": "Office",
+    "Admin_Approval": true,
+    "Reviews": []
+  },
+  {
+    "Id": "dc20869e-0e40-4ba0-a4d5-ca68aa6e4578",
+    "Title": "Meeting2",
+    "Name": "haha",
+    "Description": "Very important2",
+    "Date": "2024-09-23T21:21:30.3750641+02:00",
+    "Start_Time": "12:00:00",
+    "End_Time": "14:30:00",
+    "Location": "Office2",
+    "Admin_Approval": true,
+    "Reviews": [
+      {
+        "Id": 1,
+        "Comment": "Great event!"
+      }
+    ]
+  }
+]
