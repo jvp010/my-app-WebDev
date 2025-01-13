@@ -16,8 +16,9 @@ public class EventAttendanceService : IEventAttendanceService{
         if(event_ == null) return false; // If the event doesn't exist, attendance is invalid.
 
         DateOnly eventDate = DateOnly.FromDateTime(event_.Date);
-        TimeOnly eventStartTime = event_.Start_Time;
-        DateTime eventDT = eventDate.ToDateTime(eventStartTime);
+        string eventStartTime = event_.Start_Time;
+        TimeOnly eventStartTimeOnly = TimeOnly.Parse(eventStartTime);
+        DateTime eventDT = eventDate.ToDateTime(eventStartTimeOnly);
         DateTime now = DateTime.Now;
         return now < eventDT; // true if its before the starttime, false if not
     }

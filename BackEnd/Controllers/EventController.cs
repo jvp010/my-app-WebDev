@@ -13,7 +13,7 @@ public class EventsController : Controller
     private bool _isAdminLoggedIn;
 
     // GET /events - Get all events
-    [HttpGet]
+    [HttpGet("/Events/get")]
     public IActionResult GetEvents()
     {
         var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/Events.json");
@@ -28,12 +28,14 @@ public class EventsController : Controller
         return NotFound("Events file not found.");
     }
 
-    public override void OnActionExecuting(ActionExecutingContext context) {
+    public override void OnActionExecuting(ActionExecutingContext context)
+    {
         base.OnActionExecuting(context);
         isAdminLoggedIn();
     }
 
-    private void isAdminLoggedIn(){
+    private void isAdminLoggedIn()
+    {
         _isAdminLoggedIn = HttpContext.Session.GetString("Role") == "Admin";
     }
 
@@ -41,7 +43,7 @@ public class EventsController : Controller
     [HttpGet("{id}")]
     public IActionResult GetEventById(Guid id) // Change to Guid
     {
-        if(_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
+        if (_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
         var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/Events.json");
 
         if (System.IO.File.Exists(jsonFilePath))
@@ -65,7 +67,7 @@ public class EventsController : Controller
     [HttpPost("{eventId}/reviews")]
     public IActionResult AddReviewToEvent(Guid eventId, [FromBody] Review review)
     {
-        if(_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
+        if (_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
         var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/Events.json");
 
         if (System.IO.File.Exists(jsonFilePath))
@@ -94,11 +96,10 @@ public class EventsController : Controller
     }
 
     // POST /events - Add a new event
-    [HttpPost]
+    [HttpPost("add")]
     public IActionResult AddEvent([FromBody] Event newEvent)
     {
-        if(_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
-        Console.WriteLine("====================================");
+        // if (_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
         var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/Events.json");
 
         if (System.IO.File.Exists(jsonFilePath))
@@ -106,7 +107,7 @@ public class EventsController : Controller
             var jsonData = System.IO.File.ReadAllText(jsonFilePath);
             var events = JsonSerializer.Deserialize<List<Event>>(jsonData);
 
-            newEvent.Id = Guid.NewGuid();  // Use Guid for the new event
+            newEvent.Id = Guid.NewGuid(); 
             events.Add(newEvent);
 
             System.IO.File.WriteAllText(jsonFilePath, JsonSerializer.Serialize(events, new JsonSerializerOptions { WriteIndented = true }));
@@ -121,7 +122,7 @@ public class EventsController : Controller
     [HttpPut("{id}")]
     public IActionResult UpdateEvent(Guid id, [FromBody] Event updatedEvent) // Change int to Guid
     {
-        if(_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
+        // if(_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
         var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/Events.json");
 
         if (System.IO.File.Exists(jsonFilePath))
@@ -138,9 +139,12 @@ public class EventsController : Controller
                 eventItem.Start_Time = updatedEvent.Start_Time; // Add Start_Time
                 eventItem.End_Time = updatedEvent.End_Time; // Add End_Time
                 eventItem.Admin_Approval = updatedEvent.Admin_Approval; // Add Admin_Approval
+                eventItem.Description = updatedEvent.Description;
 
                 System.IO.File.WriteAllText(jsonFilePath, JsonSerializer.Serialize(events, new JsonSerializerOptions { WriteIndented = true }));
+                System.Console.WriteLine(updatedEvent.Description);
 
+                System.Console.WriteLine(eventItem.Description);
                 return Ok(eventItem);
             }
 
@@ -154,7 +158,7 @@ public class EventsController : Controller
     [HttpDelete("{id}")]
     public IActionResult DeleteEventById(Guid id) // Rename this method
     {
-        if(_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
+        // if(_isAdminLoggedIn == false) return Unauthorized("only admin can do this");
         var jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/Events.json");
 
         if (System.IO.File.Exists(jsonFilePath))

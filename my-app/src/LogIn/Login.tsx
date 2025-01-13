@@ -1,4 +1,9 @@
 import { useState } from "react";
+// 2.1. The student needs to implement a React component that represents the login screen
+// •	The component needs to consume the login API build earlier. 
+// •	The component needs to display messages it receives from the API (i.e. Password is incorrect)
+// •	When the admin user is logged in the component should redirect to the dashboard page
+// •	When an unauthorized user tries to reach the administrator dashboard page the application should redirect to the login screen
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -12,13 +17,14 @@ function Login() {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include', // Include credentials (cookies) in the request
             body: JSON.stringify({ email, password })
         });
 
         if (response.ok) {
             const data = await response.text();
             setMessage(data);
-            window.location.href = '/home'; // Use native page navigation
+            window.location.href = '/home'; 
             return <h1>Home</h1>;
         } else {
             const error = await response.text();

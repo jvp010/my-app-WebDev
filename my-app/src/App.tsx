@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./LogIn/Login";
 import Home from "./Home";
+import Products from "./Assets/Products";
 
 function App() {
     return (
@@ -10,6 +11,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
             </Routes>
         </Router>
+
     );
 }
 

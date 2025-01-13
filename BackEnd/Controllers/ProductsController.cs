@@ -18,7 +18,7 @@ public class ProductsController : ControllerBase
             new Product { Id = 2, Name = "Frank", Price = 12.75m, Description = "A mouse for clicking" },
             new Product { Id = 3, Name = "Manu", Price = 199.99m, Description = "A monitor for viewing" }
         };
-        return Ok(products);
+        return Ok(            new Product { Id = 3, Name = "Manu", Price = 199.99m, Description = "A monitor for viewing" });
 
     }
 }

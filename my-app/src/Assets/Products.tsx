@@ -8,7 +8,7 @@ export type Product ={
 }
 
 function Products() {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [product, setProducts] = useState<Product | undefined>();
 
     useEffect(() => {
         fetch('http://localhost:5143/products')
@@ -17,31 +17,15 @@ function Products() {
         .catch(error => console.log(error));
     });
 
-    const rows = products.map((p: Product) =>
-        <tr key={p.id}>
-            <td>{p.id}</td>
-            <td>{p.name}</td>
-            <td>{p.price}</td>
-            <td>{p.description}</td>
-        </tr>
-    );
+    
 
     return (
         <div>
             <h1>Products</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-            </table>
+            <p>ID: {product?.id}</p>
+            <p>Name: {product?.name}</p>
+            <p>Price: {product?.price}</p>
+            <p>Description: {product?.description}</p>
         </div>
     );
 }

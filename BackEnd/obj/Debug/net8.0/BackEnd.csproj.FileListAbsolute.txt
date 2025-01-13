@@ -35,3 +35,4 @@ C:\ReactPlayRoom\BackEnd\bin\Debug\net8.0\Data\EventAttendance.json
 C:\ReactPlayRoom\BackEnd\bin\Debug\net8.0\Data\Events.json
 C:\ReactPlayRoom\BackEnd\bin\Debug\net8.0\Data\MoodTracker.json
 C:\ReactPlayRoom\BackEnd\bin\Debug\net8.0\Data\Users.json
+C:\ReactPlayRoom\BackEnd\obj\Debug\net8.0\BackEnd.sourcelink.json

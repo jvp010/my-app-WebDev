@@ -76,7 +76,7 @@ public class AuthController : Controller
             var users = JsonSerializer.Deserialize<List<User>>(jsonString);
 
             var user = users.Find(a => a.Email == UserMail);
-            return Ok(new Product { Id = 3, Name = "Manu", Price = 199.99m, Description = "A monitor for viewing" });
+            return Ok(user);
 
         }
         return BadRequest("no login");
